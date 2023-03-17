@@ -28,7 +28,7 @@ export const Page = ({page, onBack}) => {
     <div>
       <h2>{title}</h2>
       <p><strong>Author</strong> :{name} </p> <br />
-      <p><strong>Published</strong> {createdAt}</p> <br />
+      <p><strong>Published</strong> {new Date(createdAt).toLocaleDateString()}</p> <br />
       <p><strong>Tags</strong>  :{content}</p> <br />
       <button onClick={onBack}>Back to Wiki List</button>
     </div>

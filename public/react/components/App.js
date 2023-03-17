@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { PagesList } from './PagesList';
+import { AddPageForm } from './AddPageForm';
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
-
 export const App = () => {
 
 	const [pages, setPages] = useState([]);
@@ -27,7 +27,17 @@ export const App = () => {
 		<main>	
       		<h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
-			<PagesList pages={pages} />
+			{showPage ? (
+				<AddPageForm onArticleAdded={fetchPages} />
+			) : (
+				<PagesList pages={pages} />
+			)}
+			<button onClick={() => setShowPage(!showPage)}>
+				{showPage ? 'Back to Wiki List' : 'Add a Page'}
+			</button>
+				
+			
+
 		</main>
 	)
 }
