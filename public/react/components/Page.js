@@ -22,6 +22,14 @@ export const Page = ({page, onBack}) => {
     fetchUser();
   }, []);
 
+  const deletePage = async () => {
+    const response = await fetch(`${apiURL}/wiki/${title}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
 
 
   return (
@@ -31,6 +39,14 @@ export const Page = ({page, onBack}) => {
       <p><strong>Published</strong> {new Date(createdAt).toLocaleDateString()}</p> <br />
       <p><strong>Tags</strong>  :{content}</p> <br />
       <button onClick={onBack}>Back to Wiki List</button>
+      <button
+        onClick={() => {
+          deletePage();
+
+        }}
+      >
+        DELETE
+      </button>
     </div>
   );
 };
